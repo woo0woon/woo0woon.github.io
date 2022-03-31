@@ -7,16 +7,20 @@ tag: [PostgreSQL, postgres, Remote Access]
 ### 1. PostgreSQL 설정 파일 변경
 
 ```shell
-# 수신할 IP 주소 설정 (postgresql.conf)
+# 수신할 IP 주소 설정
 listen_addresses = '*'
+```
+{: file='postgresql.conf'}
 
-# 인증 환경 설정 (pg_hba.conf)
+```shell
+# 인증 환경 설정
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
 host    postgres        all             0.0.0.0/0               reject  # 원격에서 postgres db 접속 차단
 
 host    all             all             0.0.0.0/0               scram-sha-256
 ```
+{: file='pg_hba.conf'}
 
 ### 2. PostgreSQL 재시작
 
